@@ -8,10 +8,6 @@ const genreSchema = mongoose.Schema({
         minlength: 3,
         maxlength: 50,
         reqiured: true
-    },
-    type: {
-        type: String,
-        enum: ["movies", "action", "comedy", "historical", "fantasy", "horror"]
     }
 })
 
@@ -19,4 +15,5 @@ const genreSchema = mongoose.Schema({
 const Genre = mongoose.model("Genre", genreSchema);
 
 // now export this
-module.exports = Genre;
+module.exports.Genre = Genre;
+module.exports.genreSchema = genreSchema;

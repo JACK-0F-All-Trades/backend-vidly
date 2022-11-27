@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const Genre = require('../Models/Genre');
+const { Genre } = require('../Models/Genre');
 
 // genres array
 // const genres = [
@@ -29,8 +29,7 @@ router.get("/:name", async (req, res) => {
 router.post("/", async (req, res) => {
     // validation
     const schema = Joi.object({
-        name: Joi.string().min(3).required(),
-        type: Joi.string().min(3).required()
+        name: Joi.string().min(3).required()
     })
 
     const { error } = schema.validate(req.body);
@@ -64,8 +63,7 @@ router.put("/:name", async (req, res) => {
 
     // check if the request is valid.
     const schema = Joi.object({
-        name: Joi.string().min(3).required(),
-        type: Joi.string().min(3).required()
+        name: Joi.string().min(3).required()
     })
 
     const { error } = schema.validate(req.body);
@@ -77,8 +75,7 @@ router.put("/:name", async (req, res) => {
 
     // we will use the set method instead of the above approach
     foundObject.set({
-        name: req.body.name,
-        type: req.body.type
+        name: req.body.name
     })
 
     // now save the course back into the DB
